@@ -123,4 +123,102 @@ Vue是一套用于**构建用户界面**的**渐进式JavaScript框架**。
 - MVVM是`Model-View-ViewModel`
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/35204765/1678543200338-41fa899e-f7ca-4fe8-abd2-80e35e47a963.png#averageHue=%23efd678&clientId=uf624fc86-3bc7-4&from=paste&height=228&id=u339ed7e4&name=image.png&originHeight=228&originWidth=432&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33938&status=done&style=none&taskId=u57a4196c-181f-4132-baae-d780318bc18&title=&width=432)
+<a name="AVGBi"></a>
+# 基本语法
+<a name="PE02Y"></a>
+## options-data属性
+```html
+<div id="app">
+
+  <h1>{{title}}</h1>
+  <h2>{{message}}</h2>
+  
+  
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    // 使用插值语法 {{title}}
+    data: function(){
+      return {
+      	title: "Hello World",
+        message: "你好 Vue3"
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+data属性是传入一个函数，并且该函数返回一个对象：
+
+- 在Vue2.x中，也可以传入一个对象。
+- 在Vue3.x中，必须传入一个函数，否则报错
+
+data中返回的对象会被**Vue的响应式系统劫持，**之后对该**对象的修改或者访问**都是在劫持中被处理。
+
+- 所以我们在template中或者app中**通过{{message}}访问message**，可以从**对象中获取到数据。**
+- 所以我们**修改message的值时**，app中的**{{message}}也会发生改变**。
+```html
+<div id="app">
+  <h2>{{message}}</h2>
+  <button @click="changeMessage">点击改变message</button>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    // 使用插值语法 {{title}}
+    data: function(){
+      return {
+        message: "你好 Vue3"
+      }
+    },
+    methods: {
+      changeMessage: function(){
+        this.message = "hello message"
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+<a name="fIJFT"></a>
+## options-methods属性
+```html
+<div id="app">
+  <h1>当前计数：{{count}}</h1>
+  <button @click="add">+1</button>
+	<button @click="mod">-1</button>
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data(){
+      return {
+      	count: 0
+      }
+    },
+    methods: {
+      add: function(){
+        this.count++
+      },
+      mod: function(){
+        this.count--
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+我们在methods中要使用data返回对象中的数据：
+
+- 那么这个**this必须是有值**的，并且应该可以**通过this获取到data返回对象中的数据**。
+
+我们这个this能不能是window呢？
+
+- **不可以是window**。因为window中我们无法获取data返回对象中的数据
+- 如果我们使用**箭头函数**，那么这个**this就会是window**。
+
+**不能使用箭头函数来定义methods函数。**
 
