@@ -210,5 +210,198 @@ v-bind的一个语法糖，即简写是`:属性名=""`，
 ```
 <a name="zuKtr"></a>
 # v-on绑定事件
+在开发中另外一个非常重要的特性就是**交互**。<br />这个时候，我们必须监听用户发生的事件，比如点击、拖拽、键盘事件等等。在Vue中使用**v-on**指令<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/35204765/1678783597556-41c70b83-9897-49a7-8083-7e6300888a8b.png#averageHue=%23f7f5f4&clientId=u406408ef-8513-4&from=paste&height=364&id=u5ee628d1&name=image.png&originHeight=364&originWidth=401&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=64729&status=done&style=none&taskId=u687c5808-919f-494d-87da-915a2574efe&title=&width=401)
+```html
+<style>
+  .box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+
+<div id="app">
+
+  <div class="box" v-on:click="btnClick"></div>
+
+  <!--  语法糖写法  -->
+  <div class="box" @:click="btnClick"></div>
+
+  <!--   绑定其他方法 -->
+  <div class="box" @:mousemove="divMousemove"></div>
+
+  <!--  绑定多个事件  -->
+<!--   <div class="box" @:click="btnClick" @:mousemove="divMousemove"></div> -->
+  <div class="box" v-on="{ click: divClick, mousemove: divMousemove}"></div>
+<!--   <div class="box" @="{ click: divClick, mousemove: divMousemove}"></div> -->
+  
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    // 使用插值语法 {{title}}
+    data: function(){
+      return {
+        
+      }
+    },
+    methods: {
+      btnClick() {
+        console.log("hello");
+      },
+      divMousemove() {
+        console.log("mousemove");
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+<a name="stgD2"></a>
+## v-on参数传递
+```html
+<div id="app">
+
+  <!--   默认传递event对象 -->
+  <div @:click="btnClick1">1</div>
+
+  <!--   明确的参数 -->
+  <div @:click="btnClick2('123', age)">2</div>
+
+  <!--  明确的参数和event  
+        在模板中想要明确的获取event对象：$event
+  -->
+  <div @:click="btnClick3('123', age, $event)">3</div>
+  
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    // 使用插值语法 {{title}}
+    data: function(){
+      return {
+        age: 18
+      }
+    },
+    methods: {
+      // 1.默认参数：event对象
+      // 如果在绑定事件的时候，没有传递任何参数，那么event对象会被默认传进来
+      btnClick1(event) {
+        console.log("btnClick", event)
+      },
+      // 明确参数
+      btnClick2(a, age){
+        console.log(a, age)
+      },
+      btnClick3(a, age, event){
+        console.log(a, age, event)
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+<a name="AOhmO"></a>
+## v-on的修饰符
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/35204765/1678786847527-4bcc61f1-dc5c-45f1-9514-c7628bf34a34.png#averageHue=%23f1f1f1&clientId=u406408ef-8513-4&from=paste&height=326&id=uc5b3581b&name=image.png&originHeight=326&originWidth=436&originalType=binary&ratio=1.25&rotation=0&showTitle=false&size=92735&status=done&style=none&taskId=u605f98c0-1b2f-49e5-bc68-90f0b99217a&title=&width=436)
+<a name="KsGth"></a>
+## 绑定事件的修饰符
+```html
+<style>
+  .box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+
+<div id="app">
+
+  <div class="box" @click="divClick">
+    <!--     阻止冒泡 .stop -->
+    <button @click.stop="btnClick"></button>
+  </div>
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    // 使用插值语法 {{title}}
+    data: function(){
+      return {
+        
+      }
+    },
+    methods: {
+      btnClick(event) {
+        console.log("btnClick")
+      },
+      divClick() {
+        console.log("divClick")
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+
 <a name="RJw1R"></a>
 # Vue的条件渲染
+在某些情况下，我们需要根据当前的条件决定某些元素或组件是否渲染，这个时候我们就需要进行条件判断了。<br />Vue提供了下面的指令来进行条件判断：
+
+- `v-if`
+- `v-else`
+- `v-else-if`
+- `v-show`
+```html
+<div id="app">
+
+  <ul v-if="names.length > 0">
+    <li v-for="item in names">{{item}}</li>
+  </ul>
+
+  <h2 v-else>当前没有数据，请求获取后展示</h2>
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    // 使用插值语法 {{title}}
+    data: function(){
+      return {
+        names: ["a", "b", "c"]
+      }
+    }
+  })
+  app.mount("#app")
+</script>
+```
+v-if是惰性的：
+
+- 当条件为false时，直接就不会渲染DOM或者会直接销毁
+- 当为true时才会渲染
+<a name="BGk8i"></a>
+## v-show
+用法和`v-if`看起来是一致的<br />用法区别：
+
+- `v-show`不支持`template`（因为这个元素是不存在的）
+- `v-show`不可以和`v-else`一起使用
+
+本质区别：
+
+- `v-show`的DOM是实际存在的，只是通过`display`来回切换了
+- `v-if`条件为false时，是不会渲染DOM的
+
+在开发中如果元素需要频繁进行显示和隐藏，用`v-show`，否则用`v-if`。
+<a name="Nf04t"></a>
+# template元素
+`v-if`是一个指令，所以必须添加到一个元素上：
+
+- 但是我们如果希望切换的是多个元素呢？
+- 此时我们渲染div，但是我们并不希望div这种元素被渲染
+- 这个时候可以选择使用`template`
+
+`template`元素可以当作看不见的包裹元素，并且在`v-if`上使用，但是最终`template`不会被渲染出来
+
