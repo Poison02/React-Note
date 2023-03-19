@@ -11,3 +11,5 @@
 [Vue基础](/Vue-初体验/)
 
 [Vue阶段性案例](/Vue的阶段案例/)
+
+[Vue-CLI](/Vue-CLI/)
