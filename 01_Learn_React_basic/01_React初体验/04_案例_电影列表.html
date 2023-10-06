@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>电影列表</title>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+    class App extends React.Component {
+      constructor() {
+        super();
+
+        this.state = {
+          movies : ["星际穿越", "流浪地球", "独行月球", "大话西游", "火星救援"]
+        }
+      }
+
+      render() {
+        // 写法1. 直接遍历原数组，然后生成一个 <li></li> 的数组
+        /*const liELs = []
+        for (let i = 0; i < this.state.movies; i++) {
+          const movie = this.state.movies[i];
+          const liEL = <li>{movie}</li>
+          liELs.push(liEL)
+        }*/
+
+        // 写法2，使用数组的高级语法--映射
+        const liELs = this.state.movies.map(movie => {
+          return <li>{movie}</li>
+        })
+
+        return (
+          // 需要在ul下面防止li列表
+          // 写法1，直接放置 <li></li> 数组
+          /*<div>
+            <h2>电影列表</h2>
+            <ul>
+              {liELs}
+            </ul>
+          </div>*/
+
+          // 写法2
+          /*<div>
+            <h2>电影列表</h2>
+            <ul>
+              {liELs}
+            </ul>
+          </div>*/
+
+          // 写法3
+          <div>
+            <h2>电影列表</h2>
+            <ul>
+              {
+                this.state.movies.map(movie => {
+                  return <li>{movie}</li>
+                })
+              }
+            </ul>
+          </div>
+        )
+      }
+    }
+
+    root.render(<App/>)
+
+  </script>
+</body>
+</html>
