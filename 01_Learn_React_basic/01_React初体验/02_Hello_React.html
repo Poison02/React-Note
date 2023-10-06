@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello React</title>
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      let message = "Hello World";
+
+      // 1. 封装函数，用于点击事件
+      function changeText() {
+        // 1.1 改变文本
+        message = "Hello React";
+        // 1.2 重新渲染，调用渲染函数进行渲染
+        rootRender()
+      }
+
+      // 2. 和root节点绑定
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      // 3. ReactDOM渲染，将这个部分渲染为一个函数
+      function rootRender() {
+
+        root.render(
+          (<div>
+            <h2>{message}</h2>
+            <button onClick={changeText}>点击我就送999$</button>
+          </div>)
+        )
+      }
+
+      // 4. 调用函数进行渲染
+      rootRender()
+    </script>
+  </body>
+</html>
