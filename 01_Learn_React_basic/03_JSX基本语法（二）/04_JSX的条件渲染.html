@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor() {
+        super();
+
+        this.state = {
+          message: "Hello World",
+          isReady: true,
+          friend: {
+            name: "蔡徐坤",
+            desc: "你干嘛哈哈哎哟"
+          }
+        }
+      }
+
+      render() {
+
+        const {message, isReady, friend} = this.state
+
+        // 条件渲染方式1
+        let showSomething = null
+        if (isReady) {
+          showSomething = <h2>开始比赛吧！</h2>
+        } else {
+          showSomething = <h2>赶紧准备吧！</h2>
+        }
+
+        return (
+          <div>
+            <div>{showSomething}</div>
+
+            {/* 方式2，三元运算符 */}
+            <div>{isReady ? <h2>开始比赛吧！</h2> : <h2>赶紧准备吧！</h2>}</div>
+
+            {/* 方式3，&& 逻辑运算符 */}
+            <div>{friend && <div>{friend.name + " " + friend.desc}</div>}</div>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+  </script>
+</body>
+</html>

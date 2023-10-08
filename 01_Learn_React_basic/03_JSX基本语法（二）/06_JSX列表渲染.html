@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor() {
+        super();
+
+        this.state = {
+          students: [
+            { id: 111, name: "why", score: 199 },
+            { id: 112, name: "kobe", score: 98 },
+            { id: 113, name: "james", score: 199 },
+            { id: 114, name: "curry", score: 188 },
+          ]
+        }
+      }
+
+      render() {
+
+        const {students} = this.state
+
+        // 返回成绩大于100的学生
+        /*const filterStudent = students.filter(item => {
+          return item.score > 100
+        })*/
+
+        // 返回成绩大于100且只展示2个人
+        /*const filterStudent = students.filter(item => {
+          return item.score > 100
+        }).slice(0, 2)*/
+
+        return (
+          <div>
+            <div className="classItem">
+              {
+                students.map(item => {
+                  return (
+                    <div className="item" key={item.id}>
+                      <h2>学号: {item.id}</h2>
+                      <h3>姓名: {item.name}</h3>
+                      <h1>分数: {item.score}</h1>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+  </script>
+</body>
+</html>

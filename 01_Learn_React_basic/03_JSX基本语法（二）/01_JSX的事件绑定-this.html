@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="../lib/react.js"></script>
+<script src="../lib/react-dom.js"></script>
+<script src="../lib/babel.js"></script>
+
+<script type="text/babel">
+    class App extends React.Component {
+        constructor() {
+            super();
+
+            this.state = {
+                counter: 0
+            }
+
+            // 第一种绑定，直接在这里提前绑定，或者在onClick事件里写
+            this.btn1Click = this.btn1Click.bind(this)
+        }
+
+        btn1Click() {
+            console.log("btn1Click", this)
+            this.setState({
+                counter: this.state.counter + 1
+            })
+        }
+
+        // 第二种绑定，使用箭头函数进行绑定
+        btn2Click = () => {
+            console.log("btn2Click", this)
+            this.setState({
+                counter: this.state.counter + 10
+            })
+        }
+
+        btn3Click () {
+            console.log("btn3Click", this)
+            this.setState({
+                counter: this.state.counter + 100
+            })
+        }
+
+        render() {
+
+            const {counter} = this.state
+
+
+            return (
+                <div>
+                    <h2>{counter}</h2>
+                    {/* 第一种绑定，在上面声明绑定或者在onClick中绑定 */}
+                    {/* <button onClick={this.btn1Click.bind(this)}>按钮1</button> */}
+                    <button onClick={this.btn1Click}>按钮1</button>
+
+                    {/* 第二种绑定，使用箭头函数进行绑定 */}
+                    <button onClick={this.btn2Click}>按钮2</button>
+
+                    {/* 第三种绑定，使用箭头函数作为调用方法进行绑定 */}
+                    <button onClick={() => this.btn3Click()}>按钮3</button>
+                </div>
+            )
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+</script>
+</body>
+</html>
