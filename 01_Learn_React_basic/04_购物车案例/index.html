@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    thead {
+      background-color: #f2f2f2;
+    }
+
+    td, th {
+      padding: 10px 16px;
+      border: 1px solid #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+
+  <script src="./data.js"></script>
+  <script src="./format.js"></script>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor() {
+        super();
+
+        this.state = {
+          books: books
+        }
+      }
+
+      getTotalPrice() {
+        return books.reduce((previousValue, item) => {
+          return previousValue + item.count * item.price
+        }, 0)
+      }
+
+      /*increment(index) {
+        // 这里要操作books的浅拷贝
+        let newBooks = [...this.state.books]
+        newBooks[index].count += 1
+        this.setState({ books: newBooks })
+      }
+
+      decrement(index) {
+        // 这里要操作books的浅拷贝
+        let newBooks = [...this.state.books]
+        newBooks[index].count += -1
+        this.setState({ books: newBooks })
+      }*/
+
+      // 这里写个函数，是上面加减操作的合体版
+      changeCount(index, count) {
+        // 这里要操作books的浅拷贝
+        let newBooks = [...this.state.books]
+        newBooks[index].count += count
+        this.setState({ books: newBooks })
+      }
+
+      removeBook(index) {
+        // 这里要操作books的浅拷贝
+        let newBooks = [...this.state.books]
+        newBooks.splice(index, 1)
+        this.setState({ books: newBooks })
+      }
+
+      renderBookList() {
+        const { books } = this.state
+        return (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>书籍名称</th>
+                  <th>出版日期</th>
+                  <th>价格</th>
+                  <th>购买数量</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  books.map((item, index) => {
+                    return (
+                      <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.date}</td>
+                        <td>{formatPrice(item.price)}</td>
+                        <td>
+                          <button
+                            onClick={() => this.changeCount(index, -1)}
+                            disabled={books[index].count <= 1}
+                          >
+                            -
+                          </button>
+                          {item.count}
+                          <button
+                            onClick={() => this.changeCount(index, 1)}
+                          >
+                            +
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => this.removeBook(index)}
+                          >
+                            移除
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+
+            <h2>总价格：{formatPrice(this.getTotalPrice())}</h2>
+          </div>
+        )
+      }
+
+      renderBookEmpty() {
+        return (
+          <div>
+            <h2>书籍为空！</h2>
+          </div>
+        )
+      }
+
+      render() {
+
+        const {books} = this.state
+
+        return books.length ? this.renderBookList() : this.renderBookEmpty()
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+    root.render(<App/>)
+  </script>
+</body>
+</html>
