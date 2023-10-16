@@ -13,7 +13,12 @@ import ReactDOM from 'react-dom/client'
 // import App from "./11_setState详细使用/App"
 // import App from "./12_render函数的优化/App"
 // import App from "./14_ref获取DOM和组件/App"
-import App from "./15_受控组件和非受控组件/App"
+// import App from "./15_受控组件和非受控组件/01_受控组件基本使用"
+// import App from "./15_受控组件和非受控组件/02_自己提交form的表单"
+// import App from "./15_受控组件和非受控组件/03_多个表单同一个函数"
+// import App from "./15_受控组件和非受控组件/04_checkbox单选多选"
+// import App from "./15_受控组件和非受控组件/05_select控件单选多选"
+import App from "./15_受控组件和非受控组件/06_非受控组件的使用"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
