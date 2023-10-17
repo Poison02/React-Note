@@ -18,7 +18,12 @@ import ReactDOM from 'react-dom/client'
 // import App from "./15_受控组件和非受控组件/03_多个表单同一个函数"
 // import App from "./15_受控组件和非受控组件/04_checkbox单选多选"
 // import App from "./15_受控组件和非受控组件/05_select控件单选多选"
-import App from "./15_受控组件和非受控组件/06_非受控组件的使用"
+// import App from "./15_受控组件和非受控组件/06_非受控组件的使用"
+// import App from "./16_React高阶组件/01_高阶组件的定义和使用"
+// import App from "./16_React高阶组件/02_高阶组件应用-props增强"
+// import App from "./16_React高阶组件/03_高阶组件应用-Context"
+// import App from "./16_React高阶组件/04_高阶组件应用-登录鉴权"
+import App from "./16_React高阶组件/05_高阶组件应用-生命周期"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
