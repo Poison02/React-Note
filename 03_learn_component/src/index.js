@@ -23,7 +23,10 @@ import ReactDOM from 'react-dom/client'
 // import App from "./16_React高阶组件/02_高阶组件应用-props增强"
 // import App from "./16_React高阶组件/03_高阶组件应用-Context"
 // import App from "./16_React高阶组件/04_高阶组件应用-登录鉴权"
-import App from "./16_React高阶组件/05_高阶组件应用-生命周期"
+// import App from "./16_React高阶组件/05_高阶组件应用-生命周期"
+// import App from "./17_React的Portal/App"
+// import App from "./18_React的Fragment/App"
+import App from "./19_React的严格模式/App"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
