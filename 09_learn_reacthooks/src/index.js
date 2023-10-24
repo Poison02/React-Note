@@ -10,10 +10,19 @@ import ReactDOM from 'react-dom/client';
 // import App from "./04_useEffect的使用/04_逻辑分离-多个Effect";
 // import App from "./04_useEffect的使用/05_执行时机-控制回调执行";
 import App from "./05_useContext的使用/App";
-import {ThemeContext, UserContext} from "./05_useContext的使用/context";
+// import {ThemeContext, UserContext} from "./05_useContext的使用/context";
+
+import { UserContext, TokenContext } from "./12_自定义Hooks/context"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <UserContext.Provider value={{name: "why", level: 99}}>
+    <TokenContext.Provider value={'coderwhy'}>
+      <App />
+    </TokenContext.Provider>
+  </UserContext.Provider>
+);
+/*root.render(
   // <React.StrictMode>
   <UserContext.Provider value={{name: "poison", level: 99}}>
     <ThemeContext.Provider value={{color: "red", size: 30}}>
@@ -21,4 +30,4 @@ root.render(
     </ThemeContext.Provider>
   </UserContext.Provider>
   // </React.StrictMode>
-);
+);*/
