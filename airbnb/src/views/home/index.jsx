@@ -5,7 +5,7 @@ import HomeWrapper from "@/views/home/style";
 import HomeBanner from "@/views/home/c-cpns/home-banner";
 import {fetchHomeDataAction} from "@/store/modules/home";
 import SectionHeader from "@/components/section-header";
-import RoomItem from "@/components/room-item";
+import SectionRooms from "@/components/section-rooms";
 
 const Home = memo(() => {
 
@@ -26,17 +26,10 @@ const Home = memo(() => {
       <HomeBanner/>
       <div className="content">
         <div className="good-price">
-          <SectionHeader title={goodPriceInfo.title}/>
-          <ul>
-            {
-              goodPriceInfo.list?.map(item => {
-                return <RoomItem itemData={item} key={item.id}/>
-              })
-            }
-          </ul>
+          <SectionHeader title={goodPriceInfo?.title}/>
+          <SectionRooms roomList={goodPriceInfo?.list}/>
         </div>
       </div>
-      <button onClick={()=>{}}></button>
     </HomeWrapper>
   )
 })

@@ -4,3 +4,5 @@ CSS样式重置：npm install normalize.css
 安装 router：npm install react-router-dom
 安装 @reduxjs/toolkit react-redux：npm install @reduxjs/toolkit react-redux
 安装 axios：npm install axios
+安装 MUI：npm install @mui/material @emotion/react @emotion/styled
+安装 antd：npm install antd --save
