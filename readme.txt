@@ -7,3 +7,8 @@ CSS样式重置：npm install normalize.css
 安装 MUI：npm install @mui/material @emotion/react @emotion/styled
 安装 antd：npm install antd --save
 安装 classnames：npm install classnames
+
+创建网易云项目：create-react-app --template typescript
+安装 prettier： npm install prettier -D
+安装 eslint：npm install eslint -D
+安装 eslint-prettier插件：npm install eslint-plugin-prettier eslint-config-prettier -D
