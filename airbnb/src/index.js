@@ -12,18 +12,16 @@ import theme from "@/assets/theme";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    {/* Suspense用于网络请求时回调函数*/}
-    <Suspense fallback="loading">
-      {/* Provider用于全局提供store*/}
-      <Provider store={store}>
-        {/* ThemeProvider用于全局的CSS常量 */}
-        <ThemeProvider theme={theme}>
-          <HashRouter>
-            <App />
-          </HashRouter>
-        </ThemeProvider>
-      </Provider>
-    </Suspense>
-  </React.StrictMode>
+  // {/* Suspense用于网络请求时回调函数*/}
+  <Suspense fallback="loading">
+    {/* Provider用于全局提供store*/}
+    <Provider store={store}>
+      {/* ThemeProvider用于全局的CSS常量 */}
+      <ThemeProvider theme={theme}>
+        <HashRouter>
+          <App/>
+        </HashRouter>
+      </ThemeProvider>
+    </Provider>
+  </Suspense>
 );

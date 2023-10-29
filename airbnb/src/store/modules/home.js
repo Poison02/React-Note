@@ -1,5 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
-import {getHomeGoodPriceData, getHomeHighScoreData, getHomeDiscountData} from "@/services";
+import {
+  getHomeGoodPriceData,
+  getHomeHighScoreData,
+  getHomeDiscountData,
+  getHomeHotRecommendData, getHomeLongforData, getHomePlusData
+} from "@/services";
 
 // 发起网络请求
 export const fetchHomeDataAction = createAsyncThunk("fetchData", async (payload, {dispatch}) => {
@@ -16,6 +21,18 @@ export const fetchHomeDataAction = createAsyncThunk("fetchData", async (payload,
   getHomeDiscountData().then(res => {
     dispatch(changeDiscountInfoAction(res))
   })
+  // ”热门推荐“数据
+  getHomeHotRecommendData().then(res => {
+    dispatch(changeHotRecommendInfoAction(res))
+  })
+  // “向往”数据
+  getHomeLongforData().then(res => {
+    dispatch(changeLongforInfoAction(res))
+  })
+  // “plus”数据
+  getHomePlusData().then(res => {
+    dispatch(changePlusInfoAction(res))
+  })
 })
 
 const homeSlice = createSlice({
@@ -23,7 +40,10 @@ const homeSlice = createSlice({
   initialState: {
     goodPriceInfo: {},
     highScoreInfo: {},
-    discountInfo: {}
+    discountInfo: {},
+    hotRecommendInfo: {},
+    longforInfo: {},
+    plusInfo: {}
   },
   reducers: {
     changeGoodPriceInfoAction(state, {payload}) {
@@ -34,6 +54,15 @@ const homeSlice = createSlice({
     },
     changeDiscountInfoAction(state, {payload}) {
       state.discountInfo = payload
+    },
+    changeHotRecommendInfoAction(state, {payload}) {
+      state.hotRecommendInfo = payload
+    },
+    changeLongforInfoAction(state, { payload }) {
+      state.longforInfo = payload
+    },
+    changePlusInfoAction(state, { payload }) {
+      state.plusInfo = payload
     }
   }
 })
@@ -41,6 +70,9 @@ const homeSlice = createSlice({
 export const {
   changeGoodPriceInfoAction,
   changeHighScoreInfoAction,
-  changeDiscountInfoAction
+  changeDiscountInfoAction,
+  changeHotRecommendInfoAction,
+  changeLongforInfoAction,
+  changePlusInfoAction
 } = homeSlice.actions
 export default homeSlice.reducer

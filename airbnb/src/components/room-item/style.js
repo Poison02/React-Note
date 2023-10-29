@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const ItemWrapper = styled.div`
+  flex-shrink: 0;
   box-sizing: border-box;
   width: ${props => props.itemWidth};
   padding: 8px;
@@ -30,17 +31,17 @@ export const ItemWrapper = styled.div`
     margin: 10px 0 5px;
     font-size: 12px;
     font-weight: 700;
-    color: ${props => props.verifycolor};
+    color: ${props => props.verifyColor};
   }
 
   .name {
     font-size: 16px;
     font-weight: 700;
 
-    overflow: hidden;  
-    text-overflow: ellipsis; 
-    display: -webkit-box; 
-    -webkit-line-clamp: 2; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 
