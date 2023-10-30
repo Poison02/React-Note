@@ -7,6 +7,8 @@ CSS样式重置：npm install normalize.css
 安装 MUI：npm install @mui/material @emotion/react @emotion/styled
 安装 antd：npm install antd --save
 安装 classnames：npm install classnames
+安装 react-transition-group：npm install react-transition-group -D
+安装 underscore：npm install underscore -D
 
 创建网易云项目：create-react-app --template typescript
 安装 prettier： npm install prettier -D

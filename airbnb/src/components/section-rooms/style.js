@@ -1,9 +1,7 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const RoomWrapper = styled.div`
+export const RoomsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 -8px;
 `
-
-export default RoomWrapper

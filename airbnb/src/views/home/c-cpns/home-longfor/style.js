@@ -8,4 +8,4 @@ export const LongforWrapper = styled.div`
     display: flex;
     margin: 0 -8px;
   }
-`
+` 

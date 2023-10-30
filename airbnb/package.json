@@ -48,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.0.0-alpha.9"
+    "@craco/craco": "^7.0.0-alpha.9",
+    "react-transition-group": "^4.4.5",
+    "underscore": "^1.13.6"
   }
 }

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-const SectionHeaderWrapper = styled.div`
-  color: #222;
 
+export const HeaderWrapper = styled.div`
+  color: #222;
+  
   .title {
     font-size: 22px;
     font-weight: 700;
@@ -14,5 +15,3 @@ const SectionHeaderWrapper = styled.div`
     margin-bottom: 20px;
   }
 `
-
-export default SectionHeaderWrapper

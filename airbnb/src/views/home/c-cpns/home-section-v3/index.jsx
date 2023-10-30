@@ -1,9 +1,11 @@
-import {memo} from "react";
-import {SectionV3Wrapper} from "@/views/home/c-cpns/home-section-v3/style";
-import SectionHeader from "@/components/section-header";
-import ScrollView from "@/base-ui/scroll-view";
-import RoomItem from "@/components/room-item";
-import SectionFooter from "@/components/section-footer";
+import PropTypes from 'prop-types'
+import React, { memo } from 'react'
+
+import SectionHeader from '@/components/section-header'
+import { SectionV3Wrapper } from './style'
+import RoomItem from '@/components/room-item'
+import ScrollView from '@/base-ui/scroll-view'
+import SectionFooter from '@/components/section-footer'
 
 const HomeSectionV3 = memo((props) => {
   const { infoData } = props
@@ -24,5 +26,9 @@ const HomeSectionV3 = memo((props) => {
     </SectionV3Wrapper>
   )
 })
+
+HomeSectionV3.propTypes = {
+  infoData: PropTypes.object
+}
 
 export default HomeSectionV3

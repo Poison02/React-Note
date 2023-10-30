@@ -1,39 +1,40 @@
-import {memo, useEffect, useState} from "react";
-import {RightWrapper} from "@/components/app-header/c-cpns/header-right/style";
-import IconGlobal from "@/assets/svg/icon_global";
-import IconMenu from "@/assets/svg/icon_menu";
-import IconAvatar from "@/assets/svg/icon_avatar";
+import IconAvatar from '@/assets/svg/icon_avatar'
+import IconGlobal from '@/assets/svg/icon_global'
+import IconMenu from '@/assets/svg/icon_menu'
+import React, { memo, useEffect, useState } from 'react'
+import { RightWrapper } from './style'
 
 const HeaderRight = memo(() => {
-  const [showPanel, setShowPanel] = useState(false)
+  /** 定义组件内部的状态 */
+  const [ showPanel, setShowPanel ] = useState(false)
 
+  /** 副作用代码 */
   useEffect(() => {
-    function windowClickHandle() {
+    function windowHandleClick() {
       setShowPanel(false)
     }
-    // 监听window点击，弹出与隐藏 panel 面板
-    window.addEventListener("click", windowClickHandle, true)
-
+    window.addEventListener("click", windowHandleClick, true)
     return () => {
-      window.removeEventListener("click", windowClickHandle, true)
+      window.removeEventListener("click", windowHandleClick, true)
     }
   }, [])
 
-  /* 监听Profile组件的点击事件 */
-  function panelClickHandle() {
+  /** 事件处理函数 */
+  function profileClickHandle() {
     setShowPanel(true)
   }
+
   return (
     <RightWrapper>
-      <div className="btns">
-        <span className="btn">登录</span>
-        <span className="btn">注册</span>
-        <span className="btn">
+      <div className='btns'>
+        <span className='btn'>登录</span>
+        <span className='btn'>注册</span>
+        <span className='btn'>
           <IconGlobal/>
         </span>
       </div>
 
-      <div className="profile" onClick={panelClickHandle}>
+      <div className='profile' onClick={profileClickHandle}>
         <IconMenu/>
         <IconAvatar/>
 
@@ -49,7 +50,7 @@ const HeaderRight = memo(() => {
               <div className='item'>帮助</div>
             </div>
           </div>
-        )}
+        ) }
       </div>
     </RightWrapper>
   )

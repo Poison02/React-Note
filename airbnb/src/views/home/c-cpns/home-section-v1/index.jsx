@@ -1,9 +1,9 @@
-// import SectionFooter from '@/components/section-footer'
+import SectionFooter from '@/components/section-footer'
 import SectionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
+import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { SectionV1Wrapper } from './style'
-import SectionFooter from "@/components/section-footer";
 
 const HomeSectionV1 = memo((props) => {
   const { infoData } = props
@@ -15,5 +15,9 @@ const HomeSectionV1 = memo((props) => {
     </SectionV1Wrapper>
   )
 })
+
+HomeSectionV1.propTypes = {
+  infoData: PropTypes.object
+}
 
 export default HomeSectionV1
