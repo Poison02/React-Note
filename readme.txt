@@ -14,3 +14,4 @@ CSS样式重置：npm install normalize.css
 安装 prettier： npm install prettier -D
 安装 eslint：npm install eslint -D
 安装 eslint-prettier插件：npm install eslint-plugin-prettier eslint-config-prettier -D
+安装 RTK：npm install @reduxjs/toolkit react-redux
