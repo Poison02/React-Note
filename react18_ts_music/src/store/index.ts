@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterSlice from './modules/counter'
 import {
   useSelector,
   useDispatch,
@@ -7,9 +6,13 @@ import {
   TypedUseSelectorHook
 } from 'react-redux'
 
+import counterSlice from './modules/counter'
+import recommendSlice from '@/views/discover/c-views/recommend/store/recommend'
+
 const store = configureStore({
   reducer: {
-    counter: counterSlice
+    counter: counterSlice,
+    recommend: recommendSlice
   }
 })
 
