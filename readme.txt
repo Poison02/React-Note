@@ -17,3 +17,7 @@ CSS样式重置：npm install normalize.css
 安装 RTK：npm install @reduxjs/toolkit react-redux
 安装 axios：npm install axios
 安装 serve：npm install serve -g
+安装 styled-components：npm install styled-components -D
+安装 其声明：npm install --save-dev @types/styled-components
+安装 antd：npm install antd --save
+安装 antd图标：npm install @ant-design/icons --save
