@@ -38,7 +38,7 @@ const AreaHeaderV1: FC<IProps> = (props) => {
         <Link className="more" to={moreLink}>
           {moreText}
         </Link>
-        <i className="sprite_02_icon"></i>
+        <i className="sprite_02 icon"></i>
       </div>
     </HeaderV1Wrapper>
   )

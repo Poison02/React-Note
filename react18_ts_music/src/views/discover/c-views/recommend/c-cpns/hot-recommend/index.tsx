@@ -10,12 +10,13 @@ interface IProps {
 }
 
 const HotRecommend: FC<IProps> = () => {
-  const { hotRecommend } = useAppSelector(
+  const { hotRecommends } = useAppSelector(
     (state) => ({
-      hotRecommend: state.recommend.hotRecommends
+      hotRecommends: state.recommend.hotRecommends
     }),
     shallowEqualApp
   )
+
   return (
     <RecommendWrapper>
       <AreaHeaderV1
@@ -23,9 +24,10 @@ const HotRecommend: FC<IProps> = () => {
         keywords={['华语', '流行', '摇滚', '民谣', '电子']}
         moreLink="/discover/songs"
       />
+
       <div className="recommend-list">
-        {hotRecommend.map((item) => {
-          return <SongMenuItem itemData={item} key={item.id} />
+        {hotRecommends.map((item) => {
+          return <SongMenuItem key={item.id} itemData={item} />
         })}
       </div>
     </RecommendWrapper>

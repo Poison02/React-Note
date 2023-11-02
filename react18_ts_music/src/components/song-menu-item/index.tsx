@@ -13,14 +13,14 @@ const SongMenuItem: FC<IProps> = (props) => {
   return (
     <MenuItemWrapper>
       <div className="top">
-        <img src={getImageSize(itemData.picUrl, 140)} alt="xxx" />
+        <img src={getImageSize(itemData.picUrl, 140)} alt="" />
         <div className="cover sprite_cover">
           <div className="info sprite_cover">
             <span>
-              <i className="sprite_icon_headset"></i>
+              <i className="sprite_icon headset"></i>
               <span className="count">{formatCount(itemData.playCount)}</span>
             </span>
-            <i className="sprite_icon_play"></i>
+            <i className="sprite_icon play"></i>
           </div>
         </div>
       </div>

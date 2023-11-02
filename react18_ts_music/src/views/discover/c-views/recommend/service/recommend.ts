@@ -14,3 +14,18 @@ export function getHotRecommend(limit = 30) {
     }
   })
 }
+
+export function getNewAlbum() {
+  return hyRequest.get({
+    url: '/album/newest'
+  })
+}
+
+export function getPlaylistDetail(id: number) {
+  return hyRequest.get({
+    url: '/playlist/detail',
+    params: {
+      id
+    }
+  })
+}
