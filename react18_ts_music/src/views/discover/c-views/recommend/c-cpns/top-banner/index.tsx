@@ -1,5 +1,5 @@
-import React, { ElementRef, memo, useRef, useState } from 'react'
-import type { FC, ReactNode } from 'react'
+import React, { memo, useRef, useState } from 'react'
+import type { FC, ReactNode, ElementRef } from 'react'
 import { Carousel } from 'antd'
 import classNames from 'classnames'
 
@@ -41,7 +41,6 @@ const TopBanner: FC<IProps> = (props) => {
   let bgImageUrl
   if (currentIndex >= 0 && banners.length > 0) {
     bgImageUrl = banners[currentIndex].imageUrl + '?imageView&blur=40x20'
-    console.log(currentIndex, bgImageUrl)
   }
 
   return (
