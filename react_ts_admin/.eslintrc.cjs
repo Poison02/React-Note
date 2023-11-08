@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: ['react-refresh', '@typescript-eslint'],
   rules: {
-    'semi': 'off', // 不强制在语句末尾使用分号。
+    semi: 'off', // 不强制在语句末尾使用分号。
     'arrow-body-style': 'off', // 不强制在箭头函数体周围使用大括号。
     'no-console': 'off', // 关闭使用 console 报错。
     'no-undef': 'warn', // 使用 undefined 时警告。
